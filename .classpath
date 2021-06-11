@@ -36,5 +36,10 @@
 			<attribute name="owner.project.facets" value="jboss.m2"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/EstAngelMesiasJadanC/Tomcat/apache-tomcat-9.0.45/lib/annotations-api.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="https://jakarta.ee/specifications/servlet/5.0/apidocs/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

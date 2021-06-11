@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+<h:title>
+Inicio menús
+</h:title>
+</h:head> 
+<body>
+
+<h:form>
+<h:commandButton action="#{tarjetaCreditoBeans.generarTarjeta()}" value="Generar nueva tarjeta de crédito" />
+</h:form>
+
+
+<!-- Comida -->
+
+<h:form>
+<h4>Sección de comida</h4>
+<h:panelGrid columns="2">
+<h:outputLabel value="Nombre" />
+<h:inputText value="#{comidaBeans.nombre}" />
+
+<h:outputLabel value="Precio" />
+<h:inputText value="#{comidaBeans.precio}" />
+
+<h:commandButton action="#{comidaBeans.saveComida()}" value="Guardar comida" />
+<h:commandButton action="#{comidaBeans.searhcComida()}" value="Buscar comida" />
+</h:panelGrid>
+
+<h:form>
+						<h:dataTable value="#{comidaBeans.list()}" var="c">
+							<h:column>
+								<f:facet name="header">Nombre</f:facet>
+								<h:outputText value="#{c.nombre}"/>
+							</h:column>
+							<h:column>
+								<f:facet name="header">Precio</f:facet>
+								<h:outputText value="#{c.precio}"" />
+							</h:column>
+							<h:column>
+								<h:commandButton action="#{pedidoBeans.addComida(c.id)}" value="Agregar" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">Accion</f:facet>
+								<h:commandLink value="Eliminar"
+									action="#{productoBean.delete(p)}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">Accion</f:facet>
+								<h:commandLink value="Editar" action="#{productoBean.edit(p)}"
+									rendered="#{not c.editable}" />
+								<h:commandLink value="Actualizar"
+									action="#{productoBean.update(p)}" rendered="#{p.editable}" />
+							</h:column>
+						</h:dataTable>
+					</h:form>
+
+
+
+
+
+<h:form>
+<h:commandButton action="#{pedidoBeans.addComida()}" value="Agregar al pedido"/>
+</h:form>
+
+</h:form>
+
+<!-- Pedido -->
+<h4>Sección de pedidos</h4>
+<h:form>
+<h:panelGrid columns="2">
+<h:outputLabel value="Fecha" />
+<h:inputText value="#{pedidoBeans.fecha}" disabled="true"/>
+<h:outputLabel value="Nombre de cliente" />
+<h:inputText value="#{pedidoBeans.cliente}" />
+
+<h:outputLabel value="Subtotal" />
+<h:inputText value="#{pedidoBeans.subtotal}" />
+
+<h:outputLabel value="I.V.A." />
+<h:inputText value="#{pedidoBeans.iva}" />
+
+<h:outputLabel value="Total" />
+<h:inputText value="#{pedidoBeans.total}" />
+<h:commandButton action="#{pedidoBeans.savePedido()}" value="Guardar pedido" />
+
+</h:panelGrid>
+</h:form>
+
+
+
+</body> 
+</html>
