@@ -37,6 +37,9 @@ public class PedidoBeans implements Serializable{
 	private double total;
 	private String observacion;
 	
+	private int tc;
+	private String nombreComida;
+	
 	private Comida comida;
 	private List<Comida> comidas;
 	private List<Pedido> pedidos;
@@ -85,9 +88,15 @@ public class PedidoBeans implements Serializable{
 		}
 	}
 	
-	public void listPedidos() {
-		try {
-			pedidos = ejbPedido.findAll();
+	public void listPedidos(String id) {
+		try {			
+			for (Pedido ped : ejbPedido.findAll()) {
+				for (Comida comida : ped.getComida()) {
+					if (comida.equals(String.valueOf(id))) {
+						
+					}
+				}
+			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
