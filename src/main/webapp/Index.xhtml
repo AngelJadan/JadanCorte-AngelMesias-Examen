@@ -21,7 +21,7 @@ Inicio menús
 		<h:outputLabel value="#{pedidoBeans.tc.titular}" />
 		<br></br>
 		<h:outputLabel value="CVV: " />
-		<h:outputLabel value="#{peidoBeans.tc.cvv}" />
+		<h:outputLabel value="#{pedidoBeans.tc.cvv}" />
 		<br></br>
 		<h:outputLabel value="Caducidad: " />
 		<h:outputLabel value="#{pedidoBeans.tc.caducidad}" />
@@ -101,15 +101,33 @@ Inicio menús
 				<h:outputLabel value="#{p.cliente}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">TC</f:facet>
+				<f:facet name="header">Numer de tarjeta</f:facet>
 				<h:outputLabel value="#{p.tcredito.id}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">Comida</f:facet>
-				<h:dataTable value="#{p.comida}" var="c">
-				<h:outputLabel value="#{c.nombre}" />
-				<h:outputLabel value="#{c.precio}" />
+				<f:facet name="header">Comida pedida</f:facet>
+				<h:dataTable value="#{p.comida}" var="o">
+					<h:column>
+						<f:facet name="header">Nombre</f:facet>
+						<h:outputLabel value="#{o.nombre}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Precio</f:facet>
+						<h:outputLabel value="#{o.precio}" />
+					</h:column>
 				</h:dataTable>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Subtotal</f:facet>
+				<h:outputLabel value="#{p.subtotal}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">I.V.A</f:facet>
+				<h:outputLabel value="#{p.iva}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Total</f:facet>
+				<h:outputLabel value="#{p.total}" />
 			</h:column>
 		</h:dataTable>
 		</h:panelGrid>
