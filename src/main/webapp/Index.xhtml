@@ -30,7 +30,7 @@ Inicio menús
 
 
 	<!-- Comida -->
-
+	
 	<h:form>
 		<h4>Sección de comida</h4>
 		<h:panelGrid columns="2">
@@ -64,7 +64,9 @@ Inicio menús
 
 	<!-- Pedido -->
 	<h4>Sección de pedidos</h4>
+	
 	<h:form>
+	<h:commandButton action="#{pedidoBeans.nuevoPedido()}" value="Nuevo pedido" />
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Fecha" />
 			<h:inputText value="#{pedidoBeans.fecha}" disabled="true" />
@@ -92,7 +94,7 @@ Inicio menús
 		<h:outputLabel value="Tarjeta/Comida" />
 		<h:inputText value="#{pedidoBeans.tccomida}" />
 		<br></br>
-		<h:commandButton action="#{pedidoBeans.listPedidos(pedidoBeans.tccomida)}" value="Buscar" />
+		<h:commandButton action="#{pedidoBeans.listPedidos( pedidoBeans.tccomida )}" value="Buscar" />
 		
 		<h:panelGrid columns="2">
 		<h:dataTable value="#{pedidoBeans.pedidos}" var="p">
@@ -101,7 +103,7 @@ Inicio menús
 				<h:outputLabel value="#{p.cliente}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">Numer de tarjeta</f:facet>
+				<f:facet name="header">Numero de tarjeta</f:facet>
 				<h:outputLabel value="#{p.tcredito.id}" />
 			</h:column>
 			<h:column>

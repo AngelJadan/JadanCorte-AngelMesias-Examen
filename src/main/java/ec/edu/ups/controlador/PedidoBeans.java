@@ -147,7 +147,7 @@ public class PedidoBeans implements Serializable {
 		pedido.setSubtotal(this.subtotal);
 		pedido.setIva(this.iva);
 		pedido.setTotal(this.total);
-		
+		pedido.setObservacion(observacion);
 		pedido.setTcredito(tc);
 		System.out.println("Comidas "+comidas.toString());
 		pedido.setComida(this.comidas);
@@ -157,16 +157,30 @@ public class PedidoBeans implements Serializable {
 			System.out.println("Error al guardar: "+e.getMessage());
 		}
 	}
+	public void nuevoPedido() {
+		System.out.println("setiando");
+		comidas = new ArrayList<>();
+		comida = new Comida();
+		pedido = new Pedido();
+		subtotal = 0.00;
+		iva = 0.0;
+		total = 0.0;
+		cliente = "";
+		observacion = "";
+		System.out.println(comida.toString()+comidas.toString()+tc.toString());
+	}
 
-	public void listPedidos(String id) {
-		try {
+	public void listPedidos(String item) {
+		pedidos =  new ArrayList<>();
+		try {			
 			for (Pedido ped : ejbPedido.findAll()) {
+				System.out.println("Item a buscar "+item);
 				System.out.println(ped.toString());
-				if ((ped.getTcredito().getId()) == Integer.parseInt(id)) {
+				if ((ped.getTcredito().getId()) == Integer.parseInt(item)) {
 					pedidos.add(ped);
 				} else {
 					for (Comida comida : ped.getComida()) {
-						if (comida.equals(String.valueOf(id))) {
+						if (comida.equals(String.valueOf(item))) {
 							pedidos.add(ped);
 						}
 					}
