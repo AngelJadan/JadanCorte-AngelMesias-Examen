@@ -35,9 +35,9 @@ public class Comida implements Serializable{
 	@Column(name = "com_precio", nullable = false)
 	private double precio;
 	
-	/*@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "com_pedido")
-	private Pedido pedido;*/
+	private Pedido pedido;
 	
 	public Comida() {
 		// TODO Auto-generated constructor stub
@@ -65,6 +65,13 @@ public class Comida implements Serializable{
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	
+	public Pedido getPedido() {
+		return pedido;
+	}
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
 	}
 	@Override
 	public String toString() {

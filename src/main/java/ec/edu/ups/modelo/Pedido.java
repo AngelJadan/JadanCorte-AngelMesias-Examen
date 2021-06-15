@@ -53,7 +53,7 @@ public class Pedido implements Serializable{
 	@JoinColumn(name = "ped_tcredito")
 	private TarjetaCredito tcredito;
 	
-	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "ped_comida")
 	private List<Comida> comida; 
 	
